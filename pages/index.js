@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image.js'
 
 import etherscanApiInstance from '../assets/axiosConfig.js'
+import ethLogo from '../assets/ethLogo.png'
 
 export default function Home() {
 	const [result, setResult] = useState()
@@ -52,6 +54,15 @@ export default function Home() {
 
 	return (
 		<div className='h-screen flex flex-col items-center justify-center text-3xl bold'>
+			<div>
+				<Image
+					src={ethLogo}
+					alt='Ethereum Logo'
+					width={350}
+					height={500}
+					priority
+				/>
+			</div>
 			<h1>ETH Genesis Block Balance: {result} ETH</h1>
 			<br />
 			<h1>

@@ -41,7 +41,6 @@ export default function GetByDate() {
 						type='date'
 						value={date}
 						placeholder='Enter date'
-						required
 					/>
 					<br />
 					<button
@@ -56,7 +55,7 @@ export default function GetByDate() {
 						src={ethLogo}
 						alt='Ethereum Logo'
 						width={350}
-						height={200}
+						height={900}
 						priority
 					/>
 				</div>
