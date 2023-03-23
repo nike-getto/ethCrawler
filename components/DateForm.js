@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+
+import ethLogo from '../assets/ethLogo.png'
 
 export default function GetByDate() {
 	const [date, setDate] = useState()
@@ -47,6 +50,15 @@ export default function GetByDate() {
 					>
 						<Link href='/'>Back to HomePage</Link>
 					</button>
+				</div>
+				<div>
+					<Image
+						src={ethLogo}
+						alt='Ethereum Logo'
+						width={350}
+						height={200}
+						priority
+					/>
 				</div>
 			</form>
 		</div>
