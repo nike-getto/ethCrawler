@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import ethLogo from '../assets/ethLogo.png'
 
@@ -38,7 +39,6 @@ export default function Form({ searchBlockchain }) {
 					value={address}
 					placeholder='Enter your wallet address'
 					onChange={(e) => setAddress(e.target.value)}
-					required
 					spellCheck='false'
 				/>
 				<br />
@@ -55,7 +55,6 @@ export default function Form({ searchBlockchain }) {
 						type='text'
 						value={startingBlock}
 						placeholder='Enter starting block number'
-						required
 					/>
 					<br />
 					<label
@@ -70,7 +69,6 @@ export default function Form({ searchBlockchain }) {
 						type='text'
 						value={endingBlock}
 						placeholder='Enter ending block number'
-						required
 					/>
 					<br />
 				</div>
@@ -80,6 +78,13 @@ export default function Form({ searchBlockchain }) {
 					type='submit'
 				>
 					Search
+				</button>
+				<br />
+				<button
+					className='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'
+					type='submit'
+				>
+					<Link href='/'>Back to HomePage</Link>
 				</button>
 			</div>
 			<div>

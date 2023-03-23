@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 
 import etherscanApiInstance from '../assets/axiosConfig.js'
-import Form from '../components/Form.js'
 
 export default function Home() {
 	const [result, setResult] = useState()
@@ -58,6 +58,33 @@ export default function Home() {
 				Number of the most recent block mined:{' '}
 				{parseInt(mostRecentBlockNumber, 16)}
 			</h1>
+			<br />
+			<div className='flex-row'>
+				<button
+					type='button'
+					className='mt-20 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
+				>
+					<Link href='/wallet'>Search by Wallet Address</Link>
+				</button>
+				<button
+					type='button'
+					className='mt-20 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
+				>
+					<Link href='/date'>Button 1</Link>
+				</button>
+				<button
+					type='button'
+					className='mt-20 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
+				>
+					<Link href='/date'>Button 3</Link>
+				</button>
+				<button
+					type='button'
+					className='mt-20 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
+				>
+					<Link href='/date'>Button 4</Link>
+				</button>
+			</div>
 		</div>
 	)
 }
