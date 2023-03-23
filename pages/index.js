@@ -56,10 +56,11 @@ export default function Home() {
 		<div className='h-screen flex flex-col items-center justify-center text-3xl bold'>
 			<div>
 				<Image
+					className='motion-safe:animate-bounce'
 					src={ethLogo}
 					alt='Ethereum Logo'
 					width={350}
-					height={500}
+					height={400}
 					priority
 				/>
 			</div>
