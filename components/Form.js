@@ -4,20 +4,13 @@ import Link from 'next/link'
 
 import ethLogo from '../assets/ethLogo.png'
 
-export default function Form({ searchBlockchain }) {
+export default function Form() {
 	const [address, setAddress] = useState('')
-	const [startingBlock, setStartingBlock] = useState()
-	const [endingBlock, setEndingBlock] = useState()
+	const [startingBlock, setStartingBlock] = useState('')
+	const [endingBlock, setEndingBlock] = useState('')
 
 	const handleAddress = (e) => {
 		e.preventDefault()
-
-		if (address.length == 42) {
-			searchBlockchain(address)
-			setAddress('')
-		} else {
-			console.log('Enter a proper address')
-		}
 	}
 
 	return (
@@ -40,6 +33,7 @@ export default function Form({ searchBlockchain }) {
 					placeholder='Enter your wallet address'
 					onChange={(e) => setAddress(e.target.value)}
 					spellCheck='false'
+					required
 				/>
 				<br />
 				<div className='mb-6'>
@@ -55,13 +49,15 @@ export default function Form({ searchBlockchain }) {
 						type='text'
 						value={startingBlock}
 						placeholder='Enter starting block number'
+						onChange={(e) => setStartingBlock(e.target.value)}
+						required
 					/>
 					<br />
 					<label
 						htmlFor='endingBlock'
 						className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
 					>
-						Ending Block Number
+						Ending Block Number (latest if not defined)
 					</label>
 					<input
 						className='block w-48 p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder:italic placeholder:text-slate-400'
@@ -69,6 +65,7 @@ export default function Form({ searchBlockchain }) {
 						type='text'
 						value={endingBlock}
 						placeholder='Enter ending block number'
+						onChange={(e) => setEndingBlock(e.target.value)}
 					/>
 					<br />
 				</div>
@@ -77,7 +74,18 @@ export default function Form({ searchBlockchain }) {
 					className='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'
 					type='submit'
 				>
-					Search
+					<Link
+						href={{
+							pathname: '/information',
+							query: {
+								address: address,
+								startblock: startingBlock,
+								endblock: endingBlock || 'latest',
+							},
+						}}
+					>
+						Search
+					</Link>
 				</button>
 				<br />
 				<button
