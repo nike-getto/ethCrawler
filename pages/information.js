@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import etherscanApiInstance from '@/assets/axiosConfig'
-import InformationItem from '@/components/InformationItem'
 import InformationTable from '@/components/InformationTable'
 
 export default function AddressData() {
@@ -10,6 +9,7 @@ export default function AddressData() {
 	const [startblock, setStartBlock] = useState('')
 	const [endblock, setEndBlock] = useState('')
 	const [result, setResult] = useState('r') // API has some problems :D
+	const [page, setPage] = useState(1)
 
 	const router = useRouter()
 
@@ -23,8 +23,8 @@ export default function AddressData() {
 					address,
 					startblock,
 					endblock,
-					page: '1',
-					offset: '5',
+					page,
+					offset: '10',
 					sort: 'desc',
 					apikey: process.env.etherscanApiKey,
 				},
