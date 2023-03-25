@@ -24,7 +24,7 @@ export default function AddressData() {
 					startblock,
 					endblock,
 					page: '1',
-					offset: '30',
+					offset: '5',
 					sort: 'desc',
 					apikey: process.env.etherscanApiKey,
 				},
