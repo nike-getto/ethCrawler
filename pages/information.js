@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import etherscanApiInstance from '@/assets/axiosConfig'
+import InformationItem from '@/components/InformationItem'
+import InformationTable from '@/components/InformationTable'
 
 export default function AddressData() {
 	const [address, setAddress] = useState('')
 	const [startblock, setStartBlock] = useState('')
 	const [endblock, setEndBlock] = useState('')
-	const [result, setResult] = useState()
+	const [result, setResult] = useState('r') // API has some problems :D
 
 	const router = useRouter()
 
@@ -18,12 +20,12 @@ export default function AddressData() {
 				params: {
 					module: 'account',
 					action: 'txlist',
-					address: '0xc5102fE9359FD9a28f877a67E36B0F050d81a3CC',
+					address,
 					startblock,
 					endblock,
 					page: '1',
-					offset: '10',
-					sort: 'asc',
+					offset: '30',
+					sort: 'desc',
 					apikey: process.env.etherscanApiKey,
 				},
 			})
@@ -34,23 +36,19 @@ export default function AddressData() {
 	}
 
 	useEffect(() => {
-		setAddress(+router.query.address)
-		setStartBlock(router.query.startblock)
-		setEndBlock(router.query.endblock)
-		setResult(searchBlockchain(address, startblock, endblock))
-	}, [])
+		if (
+			typeof router.query.address == 'string' &&
+			router.query.address.length === 42
+		) {
+			setAddress(router.query.address)
+			setStartBlock(router.query.startblock)
+			setEndBlock(router.query.endblock)
+			const res = searchBlockchain(address, startblock, endblock)
+			if (typeof res === 'object') {
+				res.then((res) => setResult(res))
+			}
+		}
+	}, [router, address, startblock, endblock])
 
-	console.log(startblock)
-
-	console.log(result)
-
-	return (
-		<div className='h-screen flex flex-col items-center justify-center text-xl bold'>
-			<h1>Block Number: {}</h1>
-			<br />
-			<h1>Gas: {}</h1>
-			<br />
-			<h1>Gas Price: {} </h1>
-		</div>
-	)
+	return <InformationTable result={result} address={address} />
 }

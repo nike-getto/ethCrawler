@@ -67,7 +67,7 @@ export default function Home() {
 			<h1>ETH Genesis Block Balance: {result} ETH</h1>
 			<br />
 			<h1>
-				Number of the most recent block mined:{' '}
+				Number of the latest block:{' '}
 				{parseInt(mostRecentBlockNumber, 16)}
 			</h1>
 			<br />
@@ -76,25 +76,13 @@ export default function Home() {
 					type='button'
 					className='mt-20 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
 				>
-					<Link href='/wallet'>Search by Wallet Address</Link>
+					<Link href='/wallet'>Enter Wallet Address</Link>
 				</button>
 				<button
 					type='button'
 					className='mt-20 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
 				>
-					<Link href='/date'>Button 1</Link>
-				</button>
-				<button
-					type='button'
-					className='mt-20 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
-				>
-					<Link href='/date'>Button 3</Link>
-				</button>
-				<button
-					type='button'
-					className='mt-20 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700'
-				>
-					<Link href='/date'>Button 4</Link>
+					<Link href='/about'>About Me</Link>
 				</button>
 			</div>
 		</div>
