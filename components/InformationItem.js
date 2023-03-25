@@ -21,7 +21,7 @@ export default function InformationItem({ result }) {
 								{to}
 							</td>
 							<td className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
-								{(value / 1000000000000000000).toFixed(8)} ETH
+								{(value / 1e18).toFixed(8)} ETH
 							</td>
 						</tr>
 					)
