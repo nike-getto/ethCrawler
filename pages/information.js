@@ -46,11 +46,6 @@ export default function AddressData() {
 			setEndBlock(router.query.endblock)
 
 			setResult(searchBlockchain(address, startblock, endblock))
-			// if (typeof res === 'object') {
-			// 	res.then((r) => setResult(r))
-			// 	console.log(`From information: ${result}`)
-			// }
-			// console.log(`From information: ${result}`)
 		}
 	}, [router, address, startblock, endblock])
 
