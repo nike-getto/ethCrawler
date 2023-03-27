@@ -42,7 +42,6 @@ export default function Home() {
 	}
 
 	useEffect(() => {
-		setResult('Loading...')
 		setMostRecentBlockNumber()
 		getAddressBalance()
 			.then((r) => setResult(r))
@@ -64,11 +63,11 @@ export default function Home() {
 					priority
 				/>
 			</div>
-			<h1>ETH Genesis Block Balance: {result} ETH</h1>
+			<h1>ETH Genesis Block Balance: {result || 'Loading...'} ETH</h1>
 			<br />
 			<h1>
-				Number of the latest block:{' '}
-				{parseInt(mostRecentBlockNumber, 16)}
+				Number of last safe block:{' '}
+				{parseInt(mostRecentBlockNumber, 16) || 'Loading...'}
 			</h1>
 			<br />
 			<div className='flex-row'>
