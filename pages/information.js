@@ -13,20 +13,7 @@ export default function AddressData() {
 
 	const router = useRouter()
 
-	function prevButtonClick(page) {
-		console.log('Clicked previous')
-		// 	if (page != 1) {
-		// 		setPage(page - 1)
-		// 	}
-	}
-
-	function nextButtonClick(page) {
-		console.log('Clicked next')
-		// 	setPage(page + 1)
-	}
-
 	async function searchBlockchain(address, startblock, endblock) {
-		setResult('Loading...')
 		endblock = endblock || 'latest'
 		try {
 			const response = await etherscanApiInstance.get('/api', {
