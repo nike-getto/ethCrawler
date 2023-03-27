@@ -8,12 +8,13 @@ export default function AddressData() {
 	const [address, setAddress] = useState('')
 	const [startblock, setStartBlock] = useState('')
 	const [endblock, setEndBlock] = useState('')
-	const [result, setResult] = useState('r') // API has some problems :D
+	const [result, setResult] = useState({}) // API has some problems :D
 	const [page, setPage] = useState(1)
 
 	const router = useRouter()
 
 	async function searchBlockchain(address, startblock, endblock) {
+		setResult('Loading...')
 		endblock = endblock || 'latest'
 		try {
 			const response = await etherscanApiInstance.get('/api', {
@@ -43,10 +44,13 @@ export default function AddressData() {
 			setAddress(router.query.address)
 			setStartBlock(router.query.startblock)
 			setEndBlock(router.query.endblock)
-			const res = searchBlockchain(address, startblock, endblock)
-			if (typeof res === 'object') {
-				res.then((res) => setResult(res))
-			}
+
+			setResult(searchBlockchain(address, startblock, endblock))
+			// if (typeof res === 'object') {
+			// 	res.then((r) => setResult(r))
+			// 	console.log(`From information: ${result}`)
+			// }
+			// console.log(`From information: ${result}`)
 		}
 	}, [router, address, startblock, endblock])
 

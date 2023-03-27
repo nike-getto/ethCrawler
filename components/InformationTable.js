@@ -1,6 +1,16 @@
+import { useEffect, useState } from 'react'
+
 import InformationItem from './InformationItem'
 
 export default function InformationTable({ address, result }) {
+	const [data, setData] = useState({})
+
+	useEffect(() => {
+		setData(result)
+		// console.log(`From Information Table: ${data}`)
+	}, [result])
+
+	// if (result.length > 1 && result != 'Error! Invalid address format') {
 	return (
 		<div className='h-screen flex flex-col items-center justify-center relative overflow-x-auto shadow-md sm:rounded-lg'>
 			<h1 className='mb-4 text-3xl font-extrabold leading-none tracking-tight'>
@@ -28,9 +38,10 @@ export default function InformationTable({ address, result }) {
 					</tr>
 				</thead>
 				<tbody className='text-xs'>
-					<InformationItem result={result} />
+					<InformationItem data={data} />
 				</tbody>
 			</table>
 		</div>
 	)
+	// }
 }
