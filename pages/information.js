@@ -13,6 +13,18 @@ export default function AddressData() {
 
 	const router = useRouter()
 
+	function prevButtonClick(page) {
+		console.log('Clicked previous')
+		// 	if (page != 1) {
+		// 		setPage(page - 1)
+		// 	}
+	}
+
+	function nextButtonClick(page) {
+		console.log('Clicked next')
+		// 	setPage(page + 1)
+	}
+
 	async function searchBlockchain(address, startblock, endblock) {
 		setResult('Loading...')
 		endblock = endblock || 'latest'
@@ -44,10 +56,31 @@ export default function AddressData() {
 			setAddress(router.query.address)
 			setStartBlock(router.query.startblock)
 			setEndBlock(router.query.endblock)
-
 			setResult(searchBlockchain(address, startblock, endblock))
+			if (page < 1) {
+				setPage(1)
+			}
 		}
-	}, [router, address, startblock, endblock])
+	}, [router, address, startblock, endblock, page])
 
-	return <InformationTable result={result} address={address} />
+	return (
+		<div className='h-screen flex flex-col items-center justify-center relative overflow-x-auto shadow-md sm:rounded-lg'>
+			<InformationTable result={result} address={address} />
+			Page: {page}
+			<div className='inline-flex'>
+				<button
+					className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l'
+					onClick={() => setPage(page - 1)}
+				>
+					Prev
+				</button>
+				<button
+					className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-r'
+					onClick={() => setPage(page + 1)}
+				>
+					Next
+				</button>
+			</div>
+		</div>
+	)
 }
