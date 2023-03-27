@@ -33,7 +33,6 @@ export default function Form() {
 					placeholder='Enter your wallet address'
 					onChange={(e) => setAddress(e.target.value)}
 					spellCheck='false'
-					required
 				/>
 				<br />
 				<div className='mb-6'>
@@ -50,7 +49,6 @@ export default function Form() {
 						value={startingBlock}
 						placeholder='Enter starting block number'
 						onChange={(e) => setStartingBlock(e.target.value)}
-						required
 					/>
 					<br />
 					<label

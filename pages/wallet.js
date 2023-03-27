@@ -1,5 +1,5 @@
 import Form from '../components/Form.js'
-import etherscanApiInstance from '@/assets/axiosConfig.js'
+import etherscanApiInstance from '@/assets/etherscanAxiosConfig.js'
 
 export default function Wallet() {
 	async function searchBlockchain(address, startblock, endblock) {

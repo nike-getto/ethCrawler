@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image.js'
 
-import etherscanApiInstance from '../assets/axiosConfig.js'
+import etherscanApiInstance from '../assets/etherscanAxiosConfig.js'
 import ethLogo from '../assets/ethLogo.png'
 
 export default function Home() {

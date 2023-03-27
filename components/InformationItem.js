@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import ConvertButton from './ConvertButton'
 
 export default function InformationItem({ data }) {
 	const [result, setResult] = useState([])
@@ -10,10 +11,8 @@ export default function InformationItem({ data }) {
 
 	async function resolveData(dataSet) {
 		if (typeof dataSet == 'object' && typeof dataSet.then === 'function') {
-			console.log('resolving...')
 			await dataSet.then((d) => {
 				if (d != 'Error! Invalid address format') {
-					console.log(d)
 					setResult(d)
 				}
 			})
@@ -21,9 +20,7 @@ export default function InformationItem({ data }) {
 	}
 
 	useEffect(() => {
-		console.log(data)
 		resolveData(data)
-		console.log(result)
 	}, [data])
 
 	return (
@@ -31,10 +28,7 @@ export default function InformationItem({ data }) {
 			{result.map((res) => {
 				const { blockHash, from, to, value } = res
 				return (
-					<tr
-						className='bg-white border-b hover:bg-gray-50'
-						// key={index}
-					>
+					<tr className='bg-white border-b hover:bg-gray-50'>
 						<td className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
 							{blockHash}
 						</td>
@@ -46,6 +40,9 @@ export default function InformationItem({ data }) {
 						</td>
 						<td className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
 							{(value / 1e18).toFixed(8)} ETH
+						</td>
+						<td className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
+							<ConvertButton />
 						</td>
 					</tr>
 				)

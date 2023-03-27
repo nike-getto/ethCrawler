@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import etherscanApiInstance from '@/assets/axiosConfig'
+import etherscanApiInstance from '@/assets/etherscanAxiosConfig'
 import InformationTable from '@/components/InformationTable'
 
 export default function AddressData() {
