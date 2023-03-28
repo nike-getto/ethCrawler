@@ -1,16 +1,43 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import ethLogo from '../assets/ethLogo.png'
+import etherscanApiInstance from '@/assets/etherscanAxiosConfig'
 
 export default function Form() {
 	const [address, setAddress] = useState('')
 	const [startingBlock, setStartingBlock] = useState('')
 	const [endingBlock, setEndingBlock] = useState('')
+	const [latestBlockNumber, setLatestBlockNumber] = useState()
+
+	useEffect(() => {
+		const blockNumberData = getLatestBlockNumber()
+		blockNumberData.then((num) => {
+			if (typeof num != 'undefined') {
+				setLatestBlockNumber(parseInt(num, 16))
+			}
+			console.log(latestBlockNumber)
+		})
+	}, [latestBlockNumber])
 
 	const handleAddress = (e) => {
 		e.preventDefault()
+	}
+
+	async function getLatestBlockNumber() {
+		try {
+			const response = await etherscanApiInstance.get('/api', {
+				params: {
+					module: 'proxy',
+					action: 'eth_blockNumber',
+					apikey: process.env.etherscanApiKey,
+				},
+			})
+			return await response.data.result
+		} catch (error) {
+			console.log(error)
+		}
 	}
 
 	return (

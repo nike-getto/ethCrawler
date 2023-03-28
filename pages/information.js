@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
 
 import etherscanApiInstance from '@/assets/etherscanAxiosConfig'
 import InformationTable from '@/components/InformationTable'
 import AddressNotValid from '@/components/AddressNotValid'
-import LoadingScreen from '@/components/LoadingScreen'
 
 export default function AddressData() {
 	const [address, setAddress] = useState('')
@@ -43,7 +41,7 @@ export default function AddressData() {
 					startblock,
 					endblock,
 					page,
-					offset: '10',
+					offset: '8',
 					sort: 'desc',
 					apikey: process.env.etherscanApiKey,
 				},

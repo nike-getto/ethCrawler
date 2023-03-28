@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react'
-import Link from 'next/link'
 
 import InformationItem from './InformationItem'
-import LoadingScreen from './LoadingScreen'
-import AddressData from '@/pages/information'
 import AddressNotValid from './AddressNotValid'
 
 export default function InformationTable({ address, result }) {
