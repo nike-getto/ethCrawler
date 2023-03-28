@@ -4,11 +4,13 @@ import { useRouter } from 'next/router'
 import etherscanApiInstance from '@/assets/etherscanAxiosConfig'
 import InformationTable from '@/components/InformationTable'
 import AddressNotValid from '@/components/AddressNotValid'
+import BlockNumberNotValid from '@/components/BlockNumberNotValid'
 
 export default function AddressData() {
 	const [address, setAddress] = useState('')
 	const [startblock, setStartBlock] = useState('')
 	const [endblock, setEndBlock] = useState('')
+	const [latestBlock, setLatestBlock] = useState('')
 	const [result, setResult] = useState({}) // API has some problems :D
 	const [page, setPage] = useState(1)
 	const [buttonDisabled, setButtonDisabled] = useState(false)
@@ -23,6 +25,7 @@ export default function AddressData() {
 			setAddress(router.query.address)
 			setStartBlock(router.query.startblock)
 			setEndBlock(router.query.endblock)
+			setLatestBlock(router.query.latestBlockNumber)
 			setResult(searchBlockchain(address, startblock, endblock))
 			if (page < 1) {
 				setPage(1)
@@ -56,10 +59,15 @@ export default function AddressData() {
 		setButtonDisabled(true)
 		setTimeout(() => {
 			setButtonDisabled(false)
-		}, 600)
+		}, 1500)
 	}
 
-	if (address.length == 42) {
+	if (
+		address.length == 42 &&
+		parseInt(startblock, 16) > parseInt(latestBlock, 16)
+	) {
+		return <BlockNumberNotValid />
+	} else if (address.length == 42) {
 		return (
 			<>
 				<div className='h-screen flex flex-col items-center justify-center relative overflow-x-auto shadow-md sm:rounded-lg'>
@@ -90,7 +98,6 @@ export default function AddressData() {
 				</div>
 			</>
 		)
-	} else {
-		return <AddressNotValid />
 	}
+	return <AddressNotValid />
 }

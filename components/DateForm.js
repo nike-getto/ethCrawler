@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import ethLogo from '../assets/ethLogo.png'
-import GetBalanceByDate from '@/components/GetBalanceByDate'
 
 export default function DateForm({ address }) {
 	const [date, setDate] = useState()
@@ -21,9 +20,9 @@ export default function DateForm({ address }) {
 	useEffect(() => {
 		if (typeof address == 'string' && address.length === 42) {
 			setAddr(address)
-			console.log(addr)
+			console.log(`date form: ${addr}`)
 		}
-	}, [addr, date])
+	}, [date])
 
 	const handleChange = (e) => {
 		setDate(e.target.value)
@@ -56,10 +55,25 @@ export default function DateForm({ address }) {
 						<label
 							htmlFor='balance'
 							className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+						></label>
+						<br />
+						<button
+							className='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'
+							type='submit'
 						>
-							Balance:{' '}
-							{<GetBalanceByDate address={addr} date={date} />}
-						</label>
+							<Link
+								href={{
+									pathname: '/date-balance',
+									query: {
+										address: addr,
+										date: date,
+									},
+								}}
+							>
+								Get Address Balance by Date
+							</Link>
+						</button>
+						<br />
 						<button
 							className='text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700'
 							type='submit'

@@ -13,7 +13,7 @@ export default function GetByDate() {
 			typeof router.query.address == 'string'
 		) {
 			setAddress(router.query.address)
-			console.log(address)
+			console.log(`date: ${address}`)
 		}
 	}, [router, address])
 

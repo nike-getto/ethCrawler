@@ -4,8 +4,7 @@ export default function BlockNumberNotValid() {
 	return (
 		<div className='h-screen flex flex-col items-center justify-center relative overflow-x-auto shadow-md sm:rounded-lg'>
 			<h1 className='mb-4 text-3xl font-extrabold leading-none tracking-tight'>
-				Please enter block number that is smaller than latest block
-				number
+				Entered Block Number greater than Latest Safe Block Number
 			</h1>
 			<br />
 			<button

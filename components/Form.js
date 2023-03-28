@@ -17,7 +17,6 @@ export default function Form() {
 			if (typeof num != 'undefined') {
 				setLatestBlockNumber(parseInt(num, 16))
 			}
-			console.log(latestBlockNumber)
 		})
 	}, [latestBlockNumber])
 
@@ -69,6 +68,9 @@ export default function Form() {
 					>
 						Starting Block Number (0 if not defined)
 					</label>
+					<label className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'>
+						Last Safe Block Number: {latestBlockNumber}
+					</label>
 					<input
 						className='block w-48 p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 placeholder:italic placeholder:text-slate-400'
 						id='startingBlock'
@@ -107,6 +109,7 @@ export default function Form() {
 								address: address,
 								startblock: startingBlock,
 								endblock: endingBlock || 'latest',
+								latestBlockNumber: latestBlockNumber,
 							},
 						}}
 					>
