@@ -3,7 +3,7 @@ import { useRouter } from 'next/router.js'
 
 import DateForm from '../components/DateForm.js'
 
-export default function getByDate() {
+export default function GetByDate() {
 	const [address, setAddress] = useState('')
 	const router = useRouter()
 
