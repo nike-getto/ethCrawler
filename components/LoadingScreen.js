@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import Router from 'next/router'
 
-export default function LoadingScreen(props) {
+export default function LoadingScreen(props, { loading }) {
 	const [isLoading, setIsLoading] = useState()
 
 	useEffect(() => {
-		setIsLoading(props.loading)
+		setIsLoading(loading)
 		const updateLoadingStatus = () => setIsLoading(isLoading)
 
 		Router.events.on('routeChangeStart', updateLoadingStatus)

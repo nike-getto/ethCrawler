@@ -59,7 +59,7 @@ export default function AddressData() {
 			}
 			handleLoadingScreen(loading)
 		}
-	}, [router, address, startblock, endblock, page, loading])
+	}, [router, address, startblock, endblock, page])
 
 	if (address.length == 42) {
 		return (
