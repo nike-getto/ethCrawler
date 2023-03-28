@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import ConvertButton from './ConvertButton'
 
 export default function InformationItem({ data }) {
 	const [result, setResult] = useState([])
@@ -42,10 +41,10 @@ export default function InformationItem({ data }) {
 							{to}
 						</td>
 						<td className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
-							{(value / 1e18).toFixed(8)} ETH
+							{(value / 1e18).toFixed(8)}
 						</td>
 						<td className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
-							<ConvertButton />
+							ETH
 						</td>
 					</tr>
 				)
