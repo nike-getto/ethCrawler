@@ -8,7 +8,6 @@ var provider =
 	'https://damp-restless-asphalt.discover.quiknode.pro/9d9a25c5696fa3e1cf9c60651d181530270e87c8/'
 var web3Provider = new Web3.providers.HttpProvider(provider)
 var web3 = new Web3(web3Provider)
-// let blockNum
 
 export default function GetBalanceByDate({ dateConfig, address }) {
 	const [latestBlockNumber, setLatestBlockNumber] = useState('')
