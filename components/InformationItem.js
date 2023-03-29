@@ -31,23 +31,20 @@ export default function InformationItem({ data }) {
 						key={nonce}
 						className='bg-white border-b hover:bg-gray-50'
 					>
-						<td
-							title={blockHash}
-							className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'
-						>
-							{blockHash.slice(0, 8)}...{blockHash.slice(-9)}
+						<td className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
+							<span title={blockHash}>
+								{blockHash.slice(0, 8)}...{blockHash.slice(-9)}
+							</span>
 						</td>
-						<td
-							title={from}
-							className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'
-						>
-							{from.slice(0, 8)}...{from.slice(-9)}
+						<td className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
+							<span title={from}>
+								{from.slice(0, 8)}...{from.slice(-9)}
+							</span>
 						</td>
-						<td
-							title={to}
-							className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'
-						>
-							{to.slice(0, 8)}...{from.slice(-9)}
+						<td className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
+							<span title={to}>
+								{to.slice(0, 8)}...{from.slice(-9)}
+							</span>
 						</td>
 						<td className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap'>
 							{(value / 1e18).toFixed(8)}
