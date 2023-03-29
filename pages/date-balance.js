@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import GetBalanceByDate from '@/components/GetBalanceByDate'
 
 export default function DateBalance() {
 	const [address, setAddress] = useState()
@@ -18,11 +19,8 @@ export default function DateBalance() {
 	}, [router, address, timestamp])
 
 	return (
-		<>
-			<h1>{address}</h1>
-			<br />
-			<h1>{timestamp}</h1>
-			<br />
-		</>
+		<div className='text-3xl h-screen flex flex-col items-center justify-center relative overflow-x-auto shadow-md sm:rounded-lg'>
+			<GetBalanceByDate dateConfig={timestamp} address={address} />
+		</div>
 	)
 }
