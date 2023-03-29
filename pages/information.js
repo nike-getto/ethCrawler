@@ -44,7 +44,7 @@ export default function AddressData() {
 					startblock,
 					endblock,
 					page,
-					offset: '8',
+					offset: '20',
 					sort: 'desc',
 					apikey: process.env.etherscanApiKey,
 				},
@@ -71,7 +71,12 @@ export default function AddressData() {
 		return (
 			<>
 				<div className='h-screen flex flex-col items-center justify-center relative overflow-x-auto shadow-md sm:rounded-lg'>
-					<InformationTable result={result} address={address} />
+					<h1 className='mb-4 text-3xl font-extrabold leading-none tracking-tight'>
+						Wallet address: {address}
+					</h1>
+					<div className='overflow-scroll overflow-x-hidden h-150'>
+						<InformationTable result={result} address={address} />
+					</div>
 					Page: {page}
 					<div className='inline-flex'>
 						<button

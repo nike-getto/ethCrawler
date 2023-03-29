@@ -14,20 +14,14 @@ export default function InformationTable({ address, result }) {
 	if (address.length === 42) {
 		return (
 			<>
-				<div className='h-screen flex flex-col items-center justify-center relative overflow-x-auto shadow-md sm:rounded-lg'>
-					<h1 className='mb-4 text-3xl font-extrabold leading-none tracking-tight'>
-						Wallet address: {address}
-					</h1>
-					<br />
-					<table className='w-700 text-sm text-left text-gray-500 dark:text-gray-400'>
-						<thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
-							<InformationTableDisplay data={data} />
-						</thead>
-						<tbody className='text-xs'>
-							<InformationItem data={data} />
-						</tbody>
-					</table>
-				</div>
+				<table className='w-700 text-sm text-left text-gray-500 dark:text-gray-400'>
+					<thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+						<InformationTableDisplay data={data} />
+					</thead>
+					<tbody className='text-xs'>
+						<InformationItem data={data} />
+					</tbody>
+				</table>
 			</>
 		)
 	} else {
