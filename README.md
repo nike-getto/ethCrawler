@@ -20,6 +20,7 @@ Project is created with:
 -   TailWind CSS
 -   Web3.js
 -   Etherscan API
+-   CoinConvert API
 
 ## Setup
 
