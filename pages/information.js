@@ -67,7 +67,7 @@ export default function AddressData() {
 		parseInt(startblock, 16) > parseInt(latestBlock, 16)
 	) {
 		return <BlockNumberNotValid />
-	} else if (address.length == 42) {
+	} else if (address.length == 42 && address.slice(0, 2) == '0x') {
 		return (
 			<>
 				<div className='h-screen flex flex-col items-center justify-center relative overflow-x-auto shadow-md sm:rounded-lg'>
