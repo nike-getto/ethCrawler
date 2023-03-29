@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 
-import etherscanApiInstance from '@/assets/etherscanAxiosConfig'
+import EthDater from 'ethereum-block-by-date'
 
 var Web3 = require('web3')
 var provider =
@@ -10,85 +10,46 @@ var web3Provider = new Web3.providers.HttpProvider(provider)
 var web3 = new Web3(web3Provider)
 
 export default function GetBalanceByDate({ dateConfig, address }) {
-	const [latestBlockNumber, setLatestBlockNumber] = useState('')
-	const [latestBlockTimestamp, setLatestBlockTimestamp] = useState('')
-	const [dateTimestamp, setDatetimestamp] = useState('')
-	const [balance, setBalance] = useState()
+	const [isLoading, setIsLoading] = useState(true)
+	const [balance, setBalance] = useState([])
 	const [addr, setAddr] = useState()
 
+	const dater = new EthDater(web3)
+
 	useEffect(() => {
-		const blockNumberData = getLatestBlockNumber()
-		blockNumberData.then((num) => {
-			if (typeof num != 'undefined') {
-				setLatestBlockNumber(parseInt(num, 16))
-			}
-		})
-		if (
-			typeof latestBlockNumber != 'undefined' &&
-			latestBlockNumber != 'NaN'
-		) {
-			getTimestamp(latestBlockNumber)
-		}
-		setDatetimestamp(new Date(dateConfig).getTime())
-		console.log(dateTimestamp)
 		setAddr(address)
-	}, [latestBlockNumber, latestBlockTimestamp, addr])
+		console.log(addr)
+		console.log(dateConfig)
+		getBlockByDate(dateConfig)
+	}, [dateConfig, addr, balance])
 
-	// useEffect(() => {
-	// 	getBalance(addr, dateTimestamp, latestBlockNumber)
-	// }, [])
-
-	async function getLatestBlockNumber() {
-		try {
-			const response = await etherscanApiInstance.get('/api', {
-				params: {
-					module: 'proxy',
-					action: 'eth_blockNumber',
-					apikey: process.env.etherscanApiKey,
-				},
+	async function getBlockByDate(dateConfig) {
+		if (
+			typeof dateConfig != 'undefined' &&
+			dateConfig != 'NaN' &&
+			typeof addr != 'undefined' &&
+			addr != 'undefined'
+		) {
+			let block = await dater.getDate(`${dateConfig}T00:00:00Z`)
+			console.log(`${dateConfig}T00:00:00Z`)
+			console.log(block.block)
+			web3.eth.getBalance(addr, block.block).then((b) => {
+				setBalance(b / 1e18)
+				setIsLoading(false)
 			})
-			return await response.data.result
-		} catch (error) {
-			console.log(error)
 		}
 	}
 
-	async function getTimestamp(latestBlockNumber) {
-		if (latestBlockNumber != 'NaN') {
-			const time = await web3.eth
-				.getBlock(latestBlockNumber)
-				.then((result) => {
-					if (typeof result != 'undefined') {
-						const ts = result.timestamp * 1e3
-						setLatestBlockTimestamp(ts)
-					}
-				})
-		}
-	}
-
-	async function getBlock(blockNum) {
-		let block = web3.eth.getBlock(blockNum).then((b) => (block = b))
-		return block
-	}
-
-	async function getBalance(address, historicTimestamp, latestBlockNumber) {
-		let blockNum = latestBlockNumber
-
-		while (true) {
-			await getBlock(blockNum)
-			if (block.timestamp * 1e3 < historicTimestamp) break
-			--blockNum
-		}
-		web3.eth
-			.getBalance(address, blockNum)
-			.then((balance) => setBalance(balance / 1e18))
+	function mapBalance(bal) {
+		return <>{bal} ETH</>
 	}
 
 	return (
 		<div className='content-center'>
 			<h1>Address: {address}</h1>
 			<br />
-			Balance on {dateConfig}: {latestBlockNumber}
+			Balance on {dateConfig}:{' '}
+			{isLoading ? 'Loading...' : mapBalance(balance)}
 			<br />
 			<br />
 			<button
