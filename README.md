@@ -10,7 +10,7 @@ This app is intented to go through Ethereum nodes and display transaction detail
 
 ## General Info
 
-This project was created based on the task given by TraceLabs team. Its purpose is to display transaction details for specific address and also display ETH balance on given date of that address.
+This project was created based on the task given by TraceLabs team. Its purpose is to display transaction details for specific address and also display ETH balance of that address on given date.
 
 ## Technologies
 
