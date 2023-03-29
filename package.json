@@ -9,8 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "alchemy-sdk": "^2.6.2",
-    "crypto-convert": "^2.1.5",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "ethereum-block-by-date": "^1.4.6",
