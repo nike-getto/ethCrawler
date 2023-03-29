@@ -26,9 +26,11 @@ export default function InformationTableDisplay({ data }) {
 	if (result.length == 0) {
 		return (
 			<>
-				<h1 className='overflow-y-hidden mb-4 text-3xl font-extrabold leading-none tracking-tight'>
-					No data to display
-				</h1>
+				<div className='overflow-y-hidden '>
+					<h1 className='mb-4 text-3xl font-extrabold leading-none tracking-tight'>
+						No data to display
+					</h1>
+				</div>
 			</>
 		)
 	} else {
