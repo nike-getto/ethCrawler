@@ -35,4 +35,4 @@ $ npm run dev
 
 ## Demo
 
-You can access this app on: [Vercel App](eth-crawler-eta.vercel.app)
+You can access this app on: [Vercel App](https://eth-crawler-eta.vercel.app)
