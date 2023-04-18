@@ -1,4 +1,4 @@
-# Ethereum Crawler - TraceLabs Internship Project
+# Ethereum Crawler - Web3 Exercise Project
 
 This app is intented to go through Ethereum nodes and display transaction details.
 
